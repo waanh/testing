@@ -1,4 +1,4 @@
-image: Ubuntu-20.04  
+image: Ubuntu2004  
 
 stack: node 20
 
