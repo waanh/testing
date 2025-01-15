@@ -2,10 +2,10 @@ import './style.css';
 import validateCardNumber from './scripts/validateCardNumber';
 import getCardType from './scripts/getCardType';
 
-document.getElementById('validate-btn').addEventListener('click', () => {
-  const cardNumber = document.getElementById('card-number').value.trim();
-  const resultDiv = document.getElementById('result');
-  
+document.querySelector('.validate-btn').addEventListener('click', () => {
+  const cardNumber = document.querySelector('.card-number').value.trim();
+  const resultDiv = document.querySelector('.result');
+
   if (validateCardNumber(cardNumber)) {
     const cardType = getCardType(cardNumber);
     resultDiv.textContent = `Valid card (${cardType})`;
@@ -16,13 +16,13 @@ document.getElementById('validate-btn').addEventListener('click', () => {
 });
 
 function showCardIcon(cardType) {
-  const icons = document.querySelectorAll('#card-icons img');
+  const icons = document.querySelectorAll('.card-icons img');
   icons.forEach(icon => {
     const type = icon.dataset.type;
-    if (type === cardType) {
-      icon.src = `./assets/${type.toLowerCase()}.png`; 
+    if (type.toLowerCase() === cardType.toLowerCase()) {
+      icon.src = require(`./assets/${type.toLowerCase()}.png`); 
     } else {
-      icon.src = `./assets/${type.toLowerCase()}-gr.png`; 
+      icon.src = require(`./assets/${type.toLowerCase()}-gr.png`); 
     }
   });
 }
